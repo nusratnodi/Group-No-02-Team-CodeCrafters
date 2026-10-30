@@ -1,0 +1,17 @@
+{
+  "name": "tripza",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tripza - A Tourism and Travel Exploration System (Group No-02, Team CodeCrafters)",
+  "scripts": {
+    "db:up": "docker compose up -d --wait",
+    "db:down": "docker compose down",
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "seed": "npm run seed --prefix backend",
+    "test": "npm test --prefix backend && npm test --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "start": "npm start --prefix backend"
+  }
+}

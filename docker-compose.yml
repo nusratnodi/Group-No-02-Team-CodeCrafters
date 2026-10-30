@@ -1,0 +1,26 @@
+# Tripza database: PostgreSQL in Docker.
+#   docker compose up -d            start the database (data is kept in the "tripza-pgdata" volume)
+#   cd backend && npm run seed      create the tables and load the sample data
+#   docker compose down             stop it (add -v to also delete the data)
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: tripza-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tripza}
+      POSTGRES_USER: ${POSTGRES_USER:-tripza}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tripza}
+      TZ: UTC
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - tripza-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  tripza-pgdata:
