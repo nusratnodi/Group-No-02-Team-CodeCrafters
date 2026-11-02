@@ -7,7 +7,8 @@ import { Button, ErrorState, Field, Loading, Modal, PageHeader, SelectField, Tex
 import { useToast } from "../context/ToastContext"
 import { useApi } from "../hooks/useApi"
 
-
+const CATEGORIES: Category[] = ["Beach", "Mountain", "Historical", "City", "Nature"]
+const REGIONS: Region[] = ["Asia", "Europe", "Americas", "Africa", "Oceania"]
 
 type FormState = Record<
   "name" | "location" | "country" | "region" | "category" | "tag" | "summary" | "description" | "imageUrl" | "gallery" | "latitude" | "longitude" | "bestTime" | "entryFee" | "openingHours" | "gettingThere" | "localTip" | "avgCost",
