@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useState, type DependencyList } from "react"
 
-interface ApiState<T> {
-  data: T | undefined
-  error: Error | undefined
-  loading: boolean
-}
+
 
 /**
  * Runs an async loader whenever `deps` change and tracks loading/error state.
